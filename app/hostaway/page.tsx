@@ -10,6 +10,7 @@ import { useRouter } from "next/navigation";
 import { fetchHostawayReviews } from "@/lib/apiHelper";
 import { LiaStarSolid } from "react-icons/lia";
 import { logout } from "@/lib/auth";
+import Link from "next/link";
 
 type ReviewRow = {
   id: number;
@@ -51,7 +52,7 @@ const Hostaway = () => {
         console.error("Hostaway fetch error:", err);
       }
     })();
-  }, [router]);
+  }, [router, rows.length]);
 
   const handleLogout = () => {
     logout('/login');
@@ -82,10 +83,10 @@ const Hostaway = () => {
             <span className="icon"><MdWeb size={18} /></span>
             <span className="label">Hostaway</span>
           </a>
-          <a className="nav-item" href="/">
+          <Link className="nav-item" href="/">
             <span className="icon"><MdHome size={18} /></span>
             <span className="label">Home</span>
-          </a>
+          </Link>
           <a
             className="nav-item nav-item--logout"
             href="#"

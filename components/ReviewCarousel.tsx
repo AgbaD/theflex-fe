@@ -7,7 +7,6 @@ import "@/css/reviews.scss";
 import Image from "next/image";
 import Avatar from "@/images/avatar.svg";
 import { fetchPublishedReviews } from "@/lib/apiHelper";
-import { s } from "framer-motion/client";
 
 type Review = {
   id: number;
@@ -46,7 +45,7 @@ const ReviewsCarousel = () => {
     if (reviews.length === 0) return;
     const timer = setInterval(next, 5000);
     return () => clearInterval(timer);
-  }, [reviews]);
+  }, [reviews, next]);
 
   if (reviews.length === 0) {
     return <p className="loading">{tableText}</p>;
